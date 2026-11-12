@@ -88,6 +88,19 @@ npm run build
 
 The production output is generated in the `dist/` folder.
 
+## Deployment (Netlify)
+
+The repository-root `netlify.toml` configures Netlify to install and build the app
+from `event-pass-generator/` and publish its `dist/` directory. The deployment
+command runs `npm ci --include=dev` before building so Vite and the other build
+tools are installed from the lockfile, including when development dependencies
+would otherwise be omitted. It also rewrites
+application routes to `index.html`, so opening or refreshing links such as
+`/user-dashboard`, `/organizer`, and `/events/:eventId` loads the React app.
+
+Deploy the repository with Netlify using this configuration. No environment
+variables are required.
+
 ## Deployment (Vercel)
 
 1. Push this project to a GitHub repository.
